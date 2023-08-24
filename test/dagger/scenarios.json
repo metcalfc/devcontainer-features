@@ -1,0 +1,32 @@
+{
+  "dagger_completion": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils:1": {},
+      "ghcr.io/devcontainers/features/docker-in-docker:1": {},
+      "dagger": {
+        "completion": true
+      }
+    }
+  },
+  "dagger_pinned": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils:1": {},
+      "ghcr.io/devcontainers/features/docker-in-docker:1": {},
+      "dagger": {
+        "version": "v0.8.0"
+      }
+    }
+  },
+  "dagger_location": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils:1": {},
+      "ghcr.io/devcontainers/features/docker-in-docker:1": {},
+      "dagger": {
+        "location": "/usr/bin"
+      }
+    }
+  }
+}

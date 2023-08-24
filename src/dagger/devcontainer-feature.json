@@ -1,0 +1,28 @@
+{
+  "name": "Dagger",
+  "id": "dagger",
+  "version": "v0.8.4",
+  "description": "A feature to install Dagger",
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "v0.8.4",
+      "description": "The version of Dagger to install"
+    },
+    "location": {
+      "type": "string",
+      "default": "/usr/local/bin",
+      "description": "The location for the Dagger binary"
+    },
+    "completion": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether or not to install Dagger shell completion after installing"
+    }
+  },
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils",
+    "ghcr.io/devcontainers/features/docker-in-docker",
+    "ghcr.io/devcontainers/features/docker-outside-of-docker"
+  ]
+}
