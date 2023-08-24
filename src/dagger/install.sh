@@ -66,4 +66,4 @@ if [ "$COMPLETION" = "true" ]; then
 fi
 
 # Clean up
-rm -rf /var/lib/apt/lists/*
+rm -rf /var/lib/apt/lists/* /tmp/dagger
