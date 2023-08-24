@@ -7,7 +7,7 @@ A feature to install Dagger
 
 ```json
 "features": {
-    "ghcr.io/dagger/devcontainer-features/dagger:1": {}
+    "ghcr.io/metcalfc/dagger-devcontainer-feature/dagger:v0": {}
 }
 ```
 
@@ -15,12 +15,12 @@ A feature to install Dagger
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| version | The version of Dagger to install | string | latest |
+| version | The version of Dagger to install | string | v0.8.4 |
 | location | The location for the Dagger binary | string | /usr/local/bin |
-| bootstrap | Whether or not to bootstrap Dagger after installing | boolean | true |
+| completion | Whether or not to install Dagger shell completion after installing | boolean | false |
 
 
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/dagger/devcontainer-features/blob/main/src/dagger/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/metcalfc/dagger-devcontainer-feature/blob/main/src/dagger/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
