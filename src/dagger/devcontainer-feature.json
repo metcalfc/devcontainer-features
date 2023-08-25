@@ -23,6 +23,8 @@
   "installsAfter": [
     "ghcr.io/devcontainers/features/common-utils",
     "ghcr.io/devcontainers/features/docker-in-docker",
-    "ghcr.io/devcontainers/features/docker-outside-of-docker"
-  ]
+    "ghcr.io/devcontainers/features/docker-outside-of-docker",
+    "ghcr.io/devcontainers/features/python"
+  ],
+  "postCreateCommand": "/usr/local/share/dagger/postCreateCommand.sh"
 }

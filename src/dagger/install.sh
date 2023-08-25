@@ -53,6 +53,17 @@ tar --directory "$LOCATION" -xzf "/tmp/dagger/dagger_${VERSION}_linux_${ARCHITEC
 
 chmod +x "$LOCATION/dagger"
 
+mkdir -p /usr/local/share/dagger
+cat <<EOF > /usr/local/share/dagger/postCreateCommand.sh
+#!/bin/bash
+set -e
+if command -v pip &> /dev/null
+then
+  pip install dagger-io==${VERSION}
+fi
+EOF
+chmod +x /usr/local/share/dagger/postCreateCommand.sh
+
 if [ "$COMPLETION" = "true" ]; then
   mkdir -p /usr/share/bash-completion/completions
   "$LOCATION/dagger" completion bash > /usr/share/bash-completion/completions/dagger
