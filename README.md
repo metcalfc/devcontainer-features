@@ -3,7 +3,7 @@
 If you are using devcontainer and you want to install the dagger CLI you can add:
 ```
     "features": {
-      "dagger": {}
+      "ghcr.io/metcalfc/dagger-devcontainer-feature/dagger:v0.8.4": {}
     }
 ```
 
@@ -12,7 +12,7 @@ the binary is installed, and if shell completion should also be installed.
 
 ```
     "features": {
-      "dagger": {
+      "ghcr.io/metcalfc/dagger-devcontainer-feature/dagger:v0.8.4": {
         "completion": true,
         "location": "/usr/bin",
         "version": "v0.8.0"
