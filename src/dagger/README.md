@@ -7,7 +7,7 @@ A feature to install Dagger
 
 ```json
 "features": {
-    "ghcr.io/metcalfc/dagger-devcontainer-feature/dagger:v0": {}
+    "ghcr.io/metcalfc/dagger-devcontainer-feature/dagger:0": {}
 }
 ```
 
@@ -15,7 +15,7 @@ A feature to install Dagger
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| version | The version of Dagger to install | string | v0.8.4 |
+| version | The version of Dagger to install | string | 0.8.4 |
 | location | The location for the Dagger binary | string | /usr/local/bin |
 | completion | Whether or not to install Dagger shell completion after installing | boolean | false |
 
