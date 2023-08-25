@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-echo "Activating feature 'Earthly'"
+echo "Activating feature 'Dagger'"
 
-VERSION=${VERSION:-latest}
+VERSION=${VERSION:-0.8.4}
 echo "Dagger version will be: $VERSION"
 LOCATION=${LOCATION:-/usr/local/bin}
 echo "Dagger will be installed here: $LOCATION"
@@ -44,12 +44,12 @@ mkdir /tmp/dagger
 cd /tmp/dagger
 
 #wget -c "https://github.com/dagger/dagger/releases/download/$VERSION/dagger_${VERSION}_linux_${ARCHITECTURE}.tar.gz"  -O - | tar --directory "$LOCATION" -xz dagger
-wget -O /tmp/dagger/dagger_${VERSION}_linux_${ARCHITECTURE}.tar.gz "https://github.com/dagger/dagger/releases/download/$VERSION/dagger_${VERSION}_linux_${ARCHITECTURE}.tar.gz"
-wget -O /tmp/dagger/checksums.txt "https://github.com/dagger/dagger/releases/download/$VERSION/checksums.txt"
+wget -O /tmp/dagger/dagger_v${VERSION}_linux_${ARCHITECTURE}.tar.gz "https://github.com/dagger/dagger/releases/download/v${VERSION}/dagger_v${VERSION}_linux_${ARCHITECTURE}.tar.gz"
+wget -O /tmp/dagger/checksums.txt "https://github.com/dagger/dagger/releases/download/v${VERSION}/checksums.txt"
 
 sha256sum -c checksums.txt --ignore-missing || (echo "Checksum failed. Exiting." && exit 1)
 
-tar --directory "$LOCATION" -xzf "/tmp/dagger/dagger_${VERSION}_linux_${ARCHITECTURE}.tar.gz" dagger
+tar --directory "$LOCATION" -xzf "/tmp/dagger/dagger_v${VERSION}_linux_${ARCHITECTURE}.tar.gz" dagger
 
 chmod +x "$LOCATION/dagger"
 
