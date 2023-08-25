@@ -1,7 +1,7 @@
 {
   "name": "Dagger CLI",
   "id": "dagger",
-  "version": "v0.8.4",
+  "version": "0.1.0",
   "description": "A feature to install Dagger",
   "options": {
     "version": {
