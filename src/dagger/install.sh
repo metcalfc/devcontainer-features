@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "Activating feature 'Earthly'"
+echo "Activating feature 'Dagger'"
 
 VERSION=${VERSION:-latest}
 echo "Dagger version will be: $VERSION"
