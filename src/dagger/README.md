@@ -7,7 +7,7 @@ A feature to install Dagger
 
 ```json
 "features": {
-    "ghcr.io/metcalfc/dagger-devcontainer-feature/dagger:v0": {}
+    "ghcr.io/metcalfc/devcontainer-features/dagger:latest": {}
 }
 ```
 
