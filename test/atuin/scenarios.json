@@ -1,0 +1,12 @@
+{
+  "atuin_completion": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils:1": {},
+      "ghcr.io/devcontainers/features/docker-in-docker:1": {},
+      "atuin": {
+        "completion": true
+      }
+    }
+  }
+}
