@@ -1,7 +1,7 @@
 {
   "name": "Atuin CLI",
   "id": "atuin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A feature to install Atuin",
   "options": {
     "completion": {
@@ -10,8 +10,6 @@
       "description": "Whether or not to install Dagger shell completion after installing"
     }
   },
-  "installsAfter": [
-    "ghcr.io/devcontainers/features/common-utils"
-  ],
+  "installsAfter": ["ghcr.io/devcontainers/features/common-utils"],
   "postAttachCommand": "/usr/local/share/atuin/postAttachCommand.sh"
 }
