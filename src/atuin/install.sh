@@ -34,27 +34,31 @@ cat <<EOF > /usr/local/share/atuin/postAttachCommand.sh
 #!/bin/bash
 set -e
 
-mkdir -p  ~/.config/atuin/
-echo "sync_frequency = \"5m\"" >> ~/.config/atuin/config.toml
+if [ ! -f ~/.config/atuin/config.toml ]
+then
+  mkdir -p  ~/.config/atuin/
+  echo "sync_frequency = \"5m\"" >> ~/.config/atuin/config.toml
+fi
 
-if [ -z "$ATUIN_USERNAME" ]; then
+if [ -z "\$ATUIN_USERNAME" ]; then
   echo "ATUIN_USERNAME not set. You'll need to login on your own."
   exit 0
 fi
 
-if [ -z "$ATUIN_PASSWORD" ]; then
+if [ -z "\$ATUIN_PASSWORD" ]; then
   echo "ATUIN_PASSWORD not set. You'll need to login on your own."
   exit 0
 fi
 
-if [ -z "$ATUIN_KEY" ]; then
+if [ -z "\$ATUIN_KEY" ]; then
   echo "ATUIN_KEY not set. You'll need to login on your own."
   exit 0
 fi
 
-atuin login -u "$ATUIN_USERNAME" -p "$ATUIN_PASSWORD" --key "$ATUIN_KEY"
+atuin login -u "\$ATUIN_USERNAME" -p "\$ATUIN_PASSWORD" --key "\$ATUIN_KEY"
 atuin sync
 EOF
+
 chmod +x /usr/local/share/atuin/postAttachCommand.sh
 
 if [ "$COMPLETION" = "true" ]; then
