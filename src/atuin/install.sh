@@ -55,6 +55,17 @@ if [ -z "\$ATUIN_KEY" ]; then
   exit 0
 fi
 
+# Setup ZSH
+echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
+
+# Setup Bash
+curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
+echo '[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh' >> ~/.bashrc
+echo 'eval "$(atuin init bash)"' >> ~/.bashrc
+
+# Setup Fish
+echo 'atuin init fish | source' >> ~/.config/fish/config.fish
+
 atuin login -u "\$ATUIN_USERNAME" -p "\$ATUIN_PASSWORD" --key "\$ATUIN_KEY"
 atuin sync
 EOF
@@ -72,8 +83,6 @@ if [ "$COMPLETION" = "true" ]; then
   /usr/bin/atuin gen-completions --shell fish > /usr/share/fish/vendor_completions.d/atuin.fish
 
 fi
-
-
 
 # Clean up
 rm -rf /var/lib/apt/lists/* /tmp/atuin
