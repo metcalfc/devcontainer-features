@@ -15,7 +15,7 @@ A feature to install Atuin
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| completion | Whether or not to install Dagger shell completion after installing | boolean | true |
+| completion | Whether or not to install Atuin shell completion after installing | boolean | true |
 
 
 
