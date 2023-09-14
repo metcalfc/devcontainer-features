@@ -3,7 +3,7 @@ set -e
 
 # check a file for the given string if it exists do nothing. If it doesn't exist, add the string to the file.
 checkFileForString() {
-    if ! grep -q "$1" "$2"; then
+    if ! grep -sq "$1" "$2"; then
         echo "$1" >> "$2"
     fi
 }

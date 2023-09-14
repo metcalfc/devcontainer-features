@@ -6,7 +6,10 @@ echo "Activating feature 'Atuin'"
 COMPLETION=${COMPLETION:-true}
 echo "Atuin completion files installed: $COMPLETION"
 
-DIRECTORY=${HOME:-$_REMOTE_USER_HOME}
+# feature scripts run as root but we want to install atuin for the container
+# or remote user
+# https://containers.dev/implementors/features/#user-env-var
+DIRECTORY="$_REMOTE_USER_HOME"
 
 export DEBIAN_FRONTEND=noninteractive
 apt_get_update()
