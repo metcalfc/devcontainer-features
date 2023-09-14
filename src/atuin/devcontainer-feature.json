@@ -11,5 +11,5 @@
     }
   },
   "installsAfter": ["ghcr.io/devcontainers/features/common-utils"],
-  "postCreateCommand ": "/usr/local/share/atuin/setup-atuin.sh"
+  "postCreateCommand": "/usr/local/share/atuin/setup-atuin.sh"
 }
