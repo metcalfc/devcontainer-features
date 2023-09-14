@@ -27,50 +27,15 @@ check_packages() {
 apt_get_update
 check_packages curl ca-certificates
 
-${PWD}/install-atuin.sh
+${PWD}/scripts/install-atuin.sh
 
 mkdir -p /usr/local/share/atuin
-cat <<EOF > /usr/local/share/atuin/postAttachCommand.sh
-#!/bin/bash
-set -e
 
-if [ ! -f ~/.config/atuin/config.toml ]
-then
-  mkdir -p  ~/.config/atuin/
-  echo "sync_frequency = \"5m\"" >> ~/.config/atuin/config.toml
-fi
-
-if [ -z "\$ATUIN_USERNAME" ]; then
-  echo "ATUIN_USERNAME not set. You'll need to login on your own."
-  exit 0
-fi
-
-if [ -z "\$ATUIN_PASSWORD" ]; then
-  echo "ATUIN_PASSWORD not set. You'll need to login on your own."
-  exit 0
-fi
-
-if [ -z "\$ATUIN_KEY" ]; then
-  echo "ATUIN_KEY not set. You'll need to login on your own."
-  exit 0
-fi
-
-# Setup ZSH
-echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
-
-# Setup Bash
-curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
-echo '[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh' >> ~/.bashrc
-echo 'eval "$(atuin init bash)"' >> ~/.bashrc
-
-# Setup Fish
-echo 'atuin init fish | source' >> ~/.config/fish/config.fish
-
-atuin login -u "\$ATUIN_USERNAME" -p "\$ATUIN_PASSWORD" --key "\$ATUIN_KEY"
-atuin sync
-EOF
-
+cp ${PWD}/scripts/postAttachCommand.sh /usr/local/share/atuin/postAttachCommand.sh
+cp ${PWD}/scripts/setup-shell.sh /usr/local/share/atuin/setup-shell.sh
+cp ${PWD}/scripts/bash-preexec.sh /usr/local/share/atuin/bash-preexec.sh
 chmod +x /usr/local/share/atuin/postAttachCommand.sh
+chmod +x /usr/local/share/atuin/setup-shell.sh
 
 if [ "$COMPLETION" = "true" ]; then
   mkdir -p /usr/share/bash-completion/completions
@@ -82,6 +47,7 @@ if [ "$COMPLETION" = "true" ]; then
   mkdir -p /usr/share/fish/vendor_completions.d
   /usr/bin/atuin gen-completions --shell fish > /usr/share/fish/vendor_completions.d/atuin.fish
 
+  echo "/usr/local/share/atuin/setup-shell.sh" >> /usr/local/share/atuin/postAttachCommand.sh
 fi
 
 # Clean up
