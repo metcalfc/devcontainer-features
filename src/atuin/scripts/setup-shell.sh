@@ -2,7 +2,7 @@
 
 set -e
 
-DIRECTORY=${$1:-$HOME}
+DIRECTORY="${1:-$HOME}"
 
 # check a file for the given string if it exists do nothing. If it doesn't exist, add the string to the file.
 checkFileForString() {
