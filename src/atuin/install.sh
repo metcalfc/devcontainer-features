@@ -6,6 +6,7 @@ echo "Activating feature 'Atuin'"
 COMPLETION=${COMPLETION:-true}
 echo "Atuin completion files installed: $COMPLETION"
 
+DIRECTORY=${HOME:-$_REMOTE_USER_HOME}
 
 export DEBIAN_FRONTEND=noninteractive
 apt_get_update()
@@ -47,7 +48,7 @@ if [ "$COMPLETION" = "true" ]; then
   mkdir -p /usr/share/fish/vendor_completions.d
   /usr/bin/atuin gen-completions --shell fish > /usr/share/fish/vendor_completions.d/atuin.fish
 
-  echo "/usr/local/share/atuin/setup-shell.sh" >> /usr/local/share/atuin/postAttachCommand.sh
+  echo "/usr/local/share/atuin/setup-shell.sh ${DIRECTORY}" >> /usr/local/share/atuin/postAttachCommand.sh
 fi
 
 # Clean up

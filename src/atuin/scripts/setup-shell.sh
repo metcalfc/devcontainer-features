@@ -2,6 +2,8 @@
 
 set -e
 
+DIRECTORY=${$1:-$HOME}
+
 # check a file for the given string if it exists do nothing. If it doesn't exist, add the string to the file.
 checkFileForString() {
     if ! grep -q "$1" "$2"; then
@@ -11,14 +13,14 @@ checkFileForString() {
 
 case $(basename $SHELL) in
     bash)
-        checkFileForString "source /usr/local/share/atuin/bash-preexec.sh" ~/.bashrc
-        checkFileForString 'eval "$(atuin init bash)"' ~/.bashrc
+        checkFileForString "source /usr/local/share/atuin/bash-preexec.sh" $DIRECTORY/.bashrc
+        checkFileForString 'eval "$(atuin init bash)"' $DIRECTORY/.bashrc
         ;;
     zsh)
-        checkFileForString 'eval "$(atuin init zsh)"' ~/.zshrc
+        checkFileForString 'eval "$(atuin init zsh)"' $DIRECTORY/.zshrc
 
         ;;
     fish)
-        checkFileForString "atuin init fish | source" ~/.config/fish/config.fish
+        checkFileForString "atuin init fish | source" $DIRECTORY/.config/fish/config.fish
         ;;
 esac
