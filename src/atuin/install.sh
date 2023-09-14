@@ -35,10 +35,10 @@ ${PWD}/scripts/install-atuin.sh
 
 mkdir -p /usr/local/share/atuin
 
-cp ${PWD}/scripts/postAttachCommand.sh /usr/local/share/atuin/postAttachCommand.sh
+cp ${PWD}/scripts/setup-atuin.sh /usr/local/share/atuin/setup-atuin.sh
 cp ${PWD}/scripts/setup-shell.sh /usr/local/share/atuin/setup-shell.sh
 cp ${PWD}/scripts/bash-preexec.sh /usr/local/share/atuin/bash-preexec.sh
-chmod +x /usr/local/share/atuin/postAttachCommand.sh
+chmod +x /usr/local/share/atuin/setup-atuin.sh
 chmod +x /usr/local/share/atuin/setup-shell.sh
 
 if [ "$COMPLETION" = "true" ]; then
@@ -51,7 +51,7 @@ if [ "$COMPLETION" = "true" ]; then
   mkdir -p /usr/share/fish/vendor_completions.d
   /usr/bin/atuin gen-completions --shell fish > /usr/share/fish/vendor_completions.d/atuin.fish
 
-  echo "/usr/local/share/atuin/setup-shell.sh ${DIRECTORY}" >> /usr/local/share/atuin/postAttachCommand.sh
+  echo "/usr/local/share/atuin/setup-shell.sh ${DIRECTORY}" >> /usr/local/share/atuin/setup-atuin.sh
 fi
 
 # Clean up
