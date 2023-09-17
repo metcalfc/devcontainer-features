@@ -12,19 +12,19 @@ checkFileForString() {
 
 checkFileForString "sync_frequency = \"5m\""  ~/.config/doppler/config.toml
 
-if [ -z "$DOPPLER_LOCAL_TOKEN" ]; then
+if [ -z "$DOPPLER_TOKEN" ]; then
   echo "DOPPLER_LOCAL_TOKEN not set. You'll need to login on your own."
   exit 0
 fi
 
 doppler configure set token $DOPPLER_LOCAL_TOKEN
 
-if [ -z "$DOPPLER_PROJECT_NAME" ]; then
+if [ -z "$DOPPLER_PROJECT" ]; then
   echo "DOPPLER_PROJECT_NAME not set. You'll need to login on your own."
   exit 0
 fi
 
-if [ -z "$DOPPLER_CONFIG_NAME" ]; then
+if [ -z "$DOPPLER_CONFIG" ]; then
   echo "DOPPLER_CONFIG_NAME not set. You'll need to login on your own."
   exit 0
 fi
