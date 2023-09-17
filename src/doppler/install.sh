@@ -46,14 +46,18 @@ cp ${PWD}/scripts/setup-doppler.sh /usr/local/share/doppler/setup-doppler.sh
 chmod +x /usr/local/share/doppler/setup-doppler.sh
 
 if [ "$COMPLETION" = "true" ]; then
-mkdir -p /usr/share/bash-completion/completions
-doppler completion install bash
+    apt-get install -y bash-completion
 
-mkdir -p /usr/local/share/zsh/site-functions
-doppler completion install zsh
+    mkdir -p /usr/share/bash-completion/completions
+    doppler completion install bash
 
-mkdir -p /usr/share/fish/vendor_completions.d
-doppler completion install fish
+    mkdir -p /usr/local/share/zsh/site-functions
+    doppler completion install zsh
+
+    # for some reason you can't install fish completions from a shell
+    # other than fish. So we'll skip until someone files an issue.
+    #mkdir -p /usr/share/fish/vendor_completions.d
+    #doppler completion install fish
 fi
 
 # Clean up
