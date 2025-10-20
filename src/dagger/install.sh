@@ -40,16 +40,7 @@ check_packages() {
 apt_get_update
 check_packages wget coreutils ca-certificates
 
-mkdir /tmp/dagger
-cd /tmp/dagger
-
-#wget -c "https://github.com/dagger/dagger/releases/download/$VERSION/dagger_${VERSION}_linux_${ARCHITECTURE}.tar.gz"  -O - | tar --directory "$LOCATION" -xz dagger
-wget -O /tmp/dagger/dagger_${VERSION}_linux_${ARCHITECTURE}.tar.gz "https://github.com/dagger/dagger/releases/download/$VERSION/dagger_${VERSION}_linux_${ARCHITECTURE}.tar.gz"
-wget -O /tmp/dagger/checksums.txt "https://github.com/dagger/dagger/releases/download/$VERSION/checksums.txt"
-
-sha256sum -c checksums.txt --ignore-missing || (echo "Checksum failed. Exiting." && exit 1)
-
-tar --directory "$LOCATION" -xzf "/tmp/dagger/dagger_${VERSION}_linux_${ARCHITECTURE}.tar.gz" dagger
+BIN_DIR="$LOCATION" ${PWD}/scripts/install-dagger.sh
 
 chmod +x "$LOCATION/dagger"
 
@@ -77,4 +68,4 @@ if [ "$COMPLETION" = "true" ]; then
 fi
 
 # Clean up
-rm -rf /var/lib/apt/lists/* /tmp/dagger
+rm -rf /var/lib/apt/lists/*
