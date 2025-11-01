@@ -17,7 +17,7 @@ jobs:
           - atuin
           - doppler
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli
       - name: "Generating tests for '${{ matrix.features }}' scenarios"
